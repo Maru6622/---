@@ -52,9 +52,9 @@ fun plot (xs:ArrayList<Int>, ys:ArrayList<Double>, number:String){  //постр
 fun deviation (n:Int, k:Double) {    // построение среднеквадратичного отклонения
    val S: ArrayList<Double> = ArrayList()
    val N: ArrayList<Int> = ArrayList()
-   for(i in 100 .. 1000){
-       S.add(sigma(n, k,10*i))
-       N.add(10*i)
+   for(i in 10 .. 10000 step 10){
+       S.add(sigma(n, k,i))
+       N.add(i)
    }
    plot(N, S,"Sigma D=$n")
 }
@@ -67,21 +67,11 @@ fun integration (D:Int, N:Int) {    //график V(D)
    }
    plot(n,V,"V(D)")
 }
+
 fun main(){
     val D=10
-    val N=1000
-    /*   val Y: ArrayList<Double> = ArrayList(D)     //график 1/х^0.5 для последующего сравнения с графиком сигмы
-    val X: ArrayList<Int> = ArrayList(D)
-    for(i in 100 .. 10000){
-       X.add(10*i)
-       Y.add((10*i).toDouble().pow(-0.5))
-   }
-   plot(X, Y, "x^(-0.5)")
-
-         */
+    val N=3000
     integration(D,N)
-    deviation(2,1.0)
     deviation(3,4.0/3.0)
-
-
+    deviation(2,1.0)
 }
